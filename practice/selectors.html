@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectors In Jquery</title>
+</head>
+<body>
+    <h1 id="heading" class="heading-class">Selectors In Jquery</h1>
+
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+
+
+    <script>
+        $(document).ready(function () {
+            
+            // Element Selector 
+
+            // $("h1").click(function () {
+            //     console.log("Element Selector");
+            // })
+
+            // ID Selector 
+
+            // $("#heading").click(function () {
+            //     console.log("ID Selector");
+            // })
+
+            // Class Selector 
+
+            $(".heading-class").click(function () {
+                console.log("Class Selector");
+            })
+
+            // universal Selector 
+
+        //     console.log("universal Selector");
+        //     $("*").click(function () {
+        // })
+        })
+    </script>
+</body>
+</html>
