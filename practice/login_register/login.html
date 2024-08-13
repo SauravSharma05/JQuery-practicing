@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="login-container">
+      <form id="login-form">
+        <input type="text" id="loginusername" placeholder="Username" required />
+        <input
+          type="password"
+          id="loginpassword"
+          placeholder="Password"
+          required
+        />
+        <input type="button" id="login" value="Sign In" />
+      </form>
+      <div id="login-message"></div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $("#login").click(function () {
+          var username = $("#loginusername").val();
+          var password = $("#loginpassword").val();
+
+          // Simple validation
+          if (username === "admin" && password === "password") {
+            $("#login-message").html(
+              "<p>Hello, admin</p><input type='button' id='logout' value='Log Out' />"
+            );
+            $("#login-container").hide();
+          } else {
+            alert("Invalid credentials. Please try again.");
+          }
+
+          // Logout functionality
+          $(document).on("click", "#logout", function () {
+            $("#login-form")[0].reset();
+            $("#login-message").empty();
+            $("#login-container").show();
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

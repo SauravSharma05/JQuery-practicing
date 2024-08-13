@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registration Form</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="registration-container">
+      <form id="registration-form">
+        <input type="text" id="name" placeholder="Name" required />
+        <input type="text" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <input
+          type="password"
+          id="cpassword"
+          placeholder="Confirm Password"
+          required
+        />
+        <input type="button" id="register" value="Register" />
+      </form>
+      <div id="registration-message"></div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $("#register").click(function () {
+          var name = $("#name").val();
+          var email = $("#email").val();
+          var password = $("#password").val();
+          var cpassword = $("#cpassword").val();
+
+          // Simple validation
+          if (
+            name === "" ||
+            email === "" ||
+            password === "" ||
+            cpassword === ""
+          ) {
+            alert("Please fill all fields.");
+          } else if (password.length < 8) {
+            alert("Password should be at least 8 characters long.");
+          } else if (password !== cpassword) {
+            alert("Passwords do not match.");
+          } else {
+            // Simulate successful registration
+            $("#registration-message").text("Successfully Registered!");
+            $("#registration-form")[0].reset();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
