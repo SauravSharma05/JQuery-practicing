@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <script>
+      var myArray = ["a", "b", "c"];
+      $.each(myArray, function (index, value) {
+        console.log("Index: " + index + ", Value: " + value);
+      });
+
+      var myArray = [3, 1, 2];
+      myArray.sort(); // Sorts the array
+      myArray.reverse(); // Reverses the order of the array
+
+      var myArray = ["Hello", "World"];
+      var result = myArray.join(" "); // Outputs: "Hello World"
+    </script>
+  </body>
+</html>
