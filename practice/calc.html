@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Simple jQuery Calculator</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+      .calculator {
+        padding: 20px;
+        background-color: #292727;
+        width: 500px;
+        margin: auto;
+        border-radius: 10px;
+      }
+      .inputDisplay {
+        width: 100%;
+        height: 40px;
+        text-align: right;
+        margin-bottom: 10px;
+      }
+      input[type="button"] {
+        width: 70px;
+        height: 70px;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <input type="text" class="inputDisplay" id="screen" disabled />
+      <div>
+        <input type="button" value="7" onclick="insertCharacter(7)" />
+        <input type="button" value="8" onclick="insertCharacter(8)" />
+        <input type="button" value="9" onclick="insertCharacter(9)" />
+        <input type="button" value="/" onclick="insertCharacter('/')" />
+      </div>
+      <div>
+        <input type="button" value="4" onclick="insertCharacter(4)" />
+        <input type="button" value="5" onclick="insertCharacter(5)" />
+        <input type="button" value="6" onclick="insertCharacter(6)" />
+        <input type="button" value="*" onclick="insertCharacter('*')" />
+      </div>
+      <div>
+        <input type="button" value="1" onclick="insertCharacter(1)" />
+        <input type="button" value="2" onclick="insertCharacter(2)" />
+        <input type="button" value="3" onclick="insertCharacter(3)" />
+        <input type="button" value="-" onclick="insertCharacter('-')" />
+      </div>
+      <div>
+        <input type="button" value="C" onclick="clearInput()" />
+        <input type="button" value="0" onclick="insertCharacter(0)" />
+        <input type="button" value="=" onclick="calculateResult()" />
+        <input type="button" value="+" onclick="insertCharacter('+')" />
+      </div>
+    </div>
+
+    <script>
+      function insertCharacter(value) {
+        $("#screen").val($("#screen").val() + value);
+      }
+
+      function clearInput() {
+        $("#screen").val("");
+      }
+
+      function calculateResult() {
+        try {
+          let result = eval($("#screen").val());
+          $("#screen").val(result);
+        } catch (e) {
+          $("#screen").val("Error");
+        }
+      }
+    </script>
+  </body>
+</html>
