@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini CRUD with jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      input {
+        width: 70%;
+        padding: 10px;
+        margin-right: 10px;
+      }
+
+      button {
+        padding: 10px 15px;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      li {
+        padding: 10px;
+        background: #e2e2e2;
+        margin: 5px 0;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      button.edit,
+      button.delete {
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Mini CRUD Application</h1>
+      <input type="text" id="itemInput" placeholder="Enter item name" />
+      <button id="addItem">Add Item</button>
+      <ul id="itemList"></ul>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        let items = [];
+
+        // Function to render the item list
+        function renderList() {
+          $("#itemList").empty();
+          $.each(items, function (index, item) {
+            $("#itemList").append(`
+                <li>
+                    ${item}
+                    <button class="edit" data-index="${index}">Edit</button>
+                    <button class="delete" data-index="${index}">Delete</button>
+                </li>
+            `);
+          });
+        }
+
+        // Add item
+        $("#addItem").click(function () {
+          const itemValue = $("#itemInput").val();
+          if (itemValue) {
+            items.push(itemValue);
+            $("#itemInput").val("");
+            renderList();
+          }
+        });
+
+        // Edit item
+        $(document).on("click", ".edit", function () {
+          const index = $(this).data("index");
+          const newValue = prompt("Edit item:", items[index]);
+          if (newValue) {
+            items[index] = newValue;
+            renderList();
+          }
+        });
+
+        // Delete item
+        $(document).on("click", ".delete", function () {
+          const index = $(this).data("index");
+          items.splice(index, 1);
+          renderList();
+        });
+      });
+    </script>
+  </body>
+</html>
