@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Drag and Drop</title>
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <style>
+      #dvSource,
+      #dvDest {
+        border: 2px dashed #ccc;
+        width: 300px;
+        min-height: 150px;
+        padding: 10px;
+        margin: 10px;
+        display: inline-block;
+      }
+      img {
+        width: 100px;
+        height: 100px;
+        cursor: move;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="dvSource">
+      <img src="https://via.placeholder.com/100" alt="Image 1" />
+      <img src="https://via.placeholder.com/100" alt="Image 2" />
+      <img src="https://via.placeholder.com/100" alt="Image 3" />
+    </div>
+
+    <div id="dvDest">Drop here</div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+      $(function () {
+        // Make images draggable
+        $("#dvSource img").draggable({
+          revert: "invalid", // Reverts back if not dropped in a droppable area
+        });
+
+        // Make the destination div droppable
+        $("#dvDest").droppable({
+          accept: "#dvSource img", // Accept only images from the source div
+          drop: function (event, ui) {
+            $(this).append(ui.draggable); // Append the dragged image to the destination
+            alert(ui.draggable.attr("alt") + " dropped."); // Alert on drop
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
