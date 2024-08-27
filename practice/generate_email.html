@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Team</h1>
+    <select id="teamName">
+      <option value="teamA@example.com">Team A</option>
+      <option value="teamB@example.com">Team B</option>
+      <option value="teamC@example.com">Team C</option></select
+    ><br /><br />
+  
+    <h1>CC</h1>
+    <input type="text" id="CC" /><br /><br />
+  
+    <h1>Issue</h1>
+    <input type="text" id="issue" /><br /><br />
+  
+    <h1>Ticket Number</h1>
+    <input type="text" id="ticketNumber" /><br /><br />
+  
+    <h1>Customer contact info</h1>
+    <input type="text" id="contactInformation" /><br /><br />
+  
+    <h1>Requested action</h1>
+    <input
+      type="radio"
+      name="requestedAction"
+      class="requestedAction"
+      value="Expedite service"
+      checked
+    />Expedite service<br />
+    <input
+      type="radio"
+      name="requestedAction"
+      class="requestedAction"
+      value="Callback"
+    />Callback<br /><br />
+  
+    <input type="button" id="generateEmail" value="Generate email" />
+  <script>
+      $(function () {
+        $("#generateEmail").click(function () {
+          var emailTo = $("#teamName").val();
+          var emailCC = $("#CC").val();
+          var emailSubject =
+            "Escalation Request - Ticket #: " + $("#ticketNumber").val();
+          var emailBody =
+            "Issue: " +
+            $("#issue").val() +
+            "%0D%0A" +
+            "Contact info: " +
+            $("#contactInformation").val() +
+            "%0D%0A" +
+            "Requested action: " +
+            $(".requestedAction:checked").val();
+    
+          window.location.href =
+            "mailto:" +
+            emailTo +
+            "?cc=" +
+            emailCC +
+            "&subject=" +
+            encodeURIComponent(emailSubject) +
+            "&body=" +
+            encodeURIComponent(emailBody);
+        });
+      });
+    </script>
+</body>
+</html>
