@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery Toggle Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      #toggleContent {
+        display: none; /* Initially hidden */
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="toggleButton">Show Content</button>
+    <div id="toggleContent">
+      <p>This is the content that can be toggled.</p>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $("#toggleButton").click(function () {
+          $("#toggleContent").toggle(); // Toggle visibility
+          // Change button text based on visibility
+          if ($("#toggleContent").is(":visible")) {
+            $(this).text("Hide Content");
+          } else {
+            $(this).text("Show Content");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
