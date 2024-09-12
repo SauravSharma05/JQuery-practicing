@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flashcard Quiz</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <h1>Flashcard Quiz</h1>
+
+    <div id="flashcard">
+      <h2>What is the capital of Madhya Pradesh?</h2>
+      <input type="text" id="answer-input" placeholder="Enter your answer" />
+      <button id="submit-btn">Submit</button>
+      <p id="result"></p>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        var correctAnswer = "Bhopal";
+
+        $("#submit-btn").click(function () {
+          var userAnswer = $("#answer-input").val().trim();
+
+          if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+            $("#result").text("Correct!");
+          } else {
+            $("#result").text(
+              "Incorrect. The correct answer is " + correctAnswer
+            );
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
