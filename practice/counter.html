@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Character Counter</title>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      #counter {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Character Counter</h1>
+    <textarea id="textInput" rows="4" cols="50" maxlength="100"></textarea>
+    <div id="counter">Characters left: 100</div>
+
+    <script>
+      $(document).ready(function () {
+        const maxChars = 100;
+
+        $("#textInput").on("input", function () {
+          const currentLength = $(this).val().length;
+          const remainingChars = maxChars - currentLength;
+
+          $("#counter").text("Characters left: " + remainingChars);
+
+          if (remainingChars < 0) {
+            $(this).val($(this).val().substring(0, maxChars));
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
