@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Interest Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <h1>Simple Interest Calculator</h1>
+    <form id="interestForm">
+      <label for="principal">Principal Amount (P):</label>
+      <input type="number" id="principal" required /><br />
+
+      <label for="rate">Rate of Interest (R):</label>
+      <input type="number" id="rate" required /><br />
+
+      <label for="time">Time (T in years):</label>
+      <input type="number" id="time" required /><br />
+
+      <button type="submit">Calculate Interest</button>
+    </form>
+
+    <h2 id="result"></h2>
+
+    <script>
+      $(document).ready(function () {
+        $("#interestForm").on("submit", function (event) {
+          event.preventDefault();
+          
+          var principal = parseFloat($("#principal").val());
+          var rate = parseFloat($("#rate").val());
+          var time = parseFloat($("#time").val());
+
+          var interest = (principal * rate * time) / 100;
+
+          $("#result").text("Simple Interest: " + interest.toFixed(2));
+        });
+      });
+    </script>
+  </body>
+</html>
