@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Draggable Div Box</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      /* styles.css */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+
+      .box {
+        width: 150px;
+        height: 150px;
+        background-color: #3498db;
+        color: white;
+        text-align: center;
+        line-height: 150px; /* Center text vertically */
+        border-radius: 10px;
+        cursor: move; /* Change cursor to indicate draggable */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="draggable" class="box">Drag me!</div>
+
+    <script>
+      $(document).ready(function () {
+        $("#draggable").draggable();
+      });
+    </script>
+  </body>
+</html>
