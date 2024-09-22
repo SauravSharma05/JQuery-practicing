@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Change Color on Click</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      .clickable {
+        cursor: pointer;
+        padding: 10px;
+        margin: 5px;
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clickable">Click me to change my color!</div>
+    <div class="clickable">Click me too!</div>
+    <p>This text will not change color.</p>
+
+    <script>
+      $(document).ready(function () {
+        $(".clickable").click(function () {
+          $(this).css("color", "red"); 
+        });
+      });
+    </script>
+  </body>
+</html>
