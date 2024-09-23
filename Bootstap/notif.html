@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      $(document).ready(function () {
+        $("#submitButton").click(function (event) {
+          event.preventDefault();
+
+          $.ajax({
+            type: "POST",
+            url: "submitForm.php", 
+            data: $("#myForm").serialize(), 
+            dataType: "json",
+            success: function (response) {
+              if (response.success) {
+                alert("Form submitted successfully!");
+              } else {
+                showErrorNotification(response.message);
+              }
+            },
+            error: function (xhr, status, error) {
+              let errorMessage =
+                xhr.responseJSON && xhr.responseJSON.message
+                  ? xhr.responseJSON.message
+                  : "An unexpected error occurred.";
+              showErrorNotification(errorMessage);
+            },
+          });
+        });
+
+        function showErrorNotification(message) {
+          let notification = $(
+            '<div class="notification error">' + message + "</div>"
+          );
+          $("body").append(notification); 
+          setTimeout(function () {
+            notification.fadeOut(300, function () {
+              $(this).remove();
+            });
+          }, 5000);
+        }
+      });
+    </script>
+  </body>
+</html>
