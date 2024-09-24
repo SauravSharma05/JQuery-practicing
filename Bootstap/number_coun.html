@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Increment Number Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <h1 id="numberDisplay">0</h1>
+      <button id="incrementButton">Increase by 1</button>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        let number = 0; 
+
+        $("#incrementButton").click(function () {
+          number++; 
+          $("#numberDisplay").text(number); 
+        });
+      });
+    </script>
+  </body>
+</html>
