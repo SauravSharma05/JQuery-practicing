@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Copy Text Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div id="text-to-copy">
+      This is the text that will be copied to the clipboard.
+    </div>
+    <button id="copy-button">Copy Text</button>
+
+    <script>
+      $(document).ready(function () {
+        $("#copy-button").click(function () {
+          var textToCopy = $("#text-to-copy").text();
+          var tempTextarea = $("<textarea>");
+          $("body").append(tempTextarea);
+          tempTextarea.val(textToCopy).select();
+          document.execCommand("copy");
+          tempTextarea.remove();
+
+          alert("Copied: " + textToCopy);
+        });
+      });
+    </script>
+  </body>
+</html>
