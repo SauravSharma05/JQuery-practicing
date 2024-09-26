@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vertical Scrolling Text</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+      }
+      #chat-box {
+        width: 300px;
+        height: 200px;
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: white;
+        position: relative;
+      }
+      .message {
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+        background-color: #e9e9e9;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chat-box"></div>
+
+    <script>
+      $(document).ready(function () {
+        const messages = [
+          "lorem",
+          "Consectetur adipiscing elit.",
+          "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          "Ut enim ad minim veniam.",
+          "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        ];
+
+        let index = 0;
+
+        function addMessage() {
+          if (index < messages.length) {
+            $("#chat-box").append(
+              `<div class="message">${messages[index]}</div>`
+            );
+            index++;
+          } else {
+            index = 0; 
+          }
+
+          $("#chat-box").animate(
+            { scrollTop: $("#chat-box")[0].scrollHeight },
+            500
+          );
+        }
+
+        setInterval(addMessage, 1500); 
+      });
+    </script>
+  </body>
+</html>
