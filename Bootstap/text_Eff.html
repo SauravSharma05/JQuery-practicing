@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Rotator</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.quote {
+    font-size: 24px;
+    margin: 20px 0;
+}
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Random Quote Generator</h1>
+        <div id="quoteDisplay" class="quote">Click the button to get a quote!</div>
+        <button id="newQuoteBtn">New Quote</button>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+    const quotes = [
+        "The only limit to our realization of tomorrow is our doubts of today.",
+        "Life is what happens when you're busy making other plans.",
+        "The purpose of our lives is to be happy.",
+        "Get busy living or get busy dying.",
+        "You only live once, but if you do it right, once is enough."
+    ];
+
+    function getRandomQuote() {
+        return quotes[Math.floor(Math.random() * quotes.length)];
+    }
+
+    $('#newQuoteBtn').click(function() {
+        const newQuote = getRandomQuote();
+        $('#quoteDisplay').fadeOut(300, function() {
+            $(this).text(newQuote).fadeIn(300);
+        });
+    });
+});
+    </script>
+</body>
+</html>
