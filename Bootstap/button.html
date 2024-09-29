@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery Button Effects</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        text-align: center;
+      }
+
+      .container {
+        margin-top: 50px;
+      }
+
+      button {
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .effect-box {
+        display: none;
+        width: 200px;
+        height: 100px;
+        background-color: #007bff;
+        color: white;
+        margin: 20px auto;
+        line-height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>jQuery Button Effects</h1>
+      <button id="fadeButton">Fade In/Out</button>
+      <button id="slideButton">Slide Up/Down</button>
+      <button id="animateButton">Animate</button>
+      <div id="effectElement" class="effect-box">Hello!</div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $("#fadeButton").click(function () {
+          $("#effectElement").fadeToggle();
+        });
+
+        $("#slideButton").click(function () {
+          $("#effectElement").slideToggle();
+        });
+
+        $("#animateButton").click(function () {
+          $("#effectElement").animate(
+            {
+              left: "+=100px",
+              opacity: "0.5",
+              height: "toggle",
+            },
+            1000
+          );
+          setTimeout(function () {
+            $("#effectElement").css({ left: "0", opacity: "1" });
+          }, 1000);
+        });
+      });
+    </script>
+  </body>
+</html>
